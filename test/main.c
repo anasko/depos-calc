@@ -1,9 +1,8 @@
 #define CTEST_MAIN
 
-#include "../src/deposit.c"
-#include <ctest.h>
-#include "deposit_test.c"
-#include "validation_test.c"
+#include "ctest.h"
+#include "deposit.h"
+
 
 int main(int argc, const char** argv)
 {

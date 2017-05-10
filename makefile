@@ -8,7 +8,7 @@ CFLAGS = -I src -I thirdparty -Wall -Werror
 
 .PHONY: all clean
 
-all: bin build deposit deposit1  test 
+all: bin build deposit  test 
 
 
 deposit: $(SOURCES_O)
@@ -45,8 +45,9 @@ build:
 	test ! -d build/test && mkdir build/test
 
 
-deposit1: build/test/main.o build/test/deposit_test.o build/test/validation_test.o
-	 $(CC) $(CFLAGS) $(BUILD_F)$(TEST_F)main.o $(BUILD_F)$(TEST_F)deposit_test.o $(BUILD_F)$(TEST_F)validation_test.o -o $(BIN_F)deposit1
+test: build/test/main.o build/test/deposit_test.o build/test/validation_test.o $(BUILD_F)$(SRC_F)deposit.o
+	 $(CC) $(CFLAGS) $(BUILD_F)$(TEST_F)main.o $(BUILD_F)$(TEST_F)deposit_test.o $(BUILD_F)$(TEST_F)validation_test.o $(BUILD_F)$(SRC_F)deposit.o  -o $(BIN_F)tests
+
 
 $(BUILD_F)$(TEST_F)main.o : $(TEST_F)main.c
 	$(CC) $(CFLAGS) -c $(TEST_F)main.c  -o $(BUILD_F)$(TEST_F)main.o 
@@ -58,9 +59,3 @@ $(BUILD_F)$(TEST_F)deposit_test.o : $(TEST_F)deposit_test.c
 $(BUILD_F)$(TEST_F)validation_test.o : $(TEST_F)validation_test.c
 	$(CC) $(CFLAGS) -c $(TEST_F)validation_test.c  -o $(BUILD_F)$(TEST_F)validation_test.o 
 
-
-test: bin tests.o
-	$(CC) $(CFLAGS) $(BIN_F)tests.o -o $(BIN_F)tests
-
-tests.o:
-	$(CC) $(CFLAGS) -c $(TEST_F)main.c -o $(BIN_F)tests.o
