@@ -1,2 +1,2 @@
 language: c
-script: make test && ./bin/tests
+script: make && ./bin/tests
