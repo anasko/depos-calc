@@ -1,7 +1,7 @@
 #define CTEST_MAIN
 
 #include "../src/deposit.c"
-#include "../thirdparty/ctest.h"
+#include <ctest.h>
 #include "deposit_test.c"
 #include "validation_test.c"
 

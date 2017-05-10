@@ -1,18 +1,19 @@
-#include "../thirdparty/ctest.h"
+#include "deposit.h"
+#include "ctest.h"
 
-CTEST(suite1, test1) {
+CTEST(srok, fore) {
     int result = chooseSrok(254);
     int expected = 4;
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(suite1, test2) {
+CTEST(srok, three) {
     int result = chooseSrok(186);
     int expected = 3;
     ASSERT_EQUAL(expected, result);
 }
 
-CTEST(suite1, test3) {
+CTEST(srok, one) {
     int result = chooseSrok(10);
     int expected = 1;
     ASSERT_EQUAL(expected, result);
